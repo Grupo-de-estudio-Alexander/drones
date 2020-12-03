@@ -1,0 +1,26 @@
+REQUERIMIENTOS FUNCIONALES DEL PROYECTO
+
+1. Tener una interfaz con un input por cada dron donde se pueda 
+ingresar la dirección a la que se enviará el dron.
+
+2. Tener dentro de la interfaz un botón de enviar para enviar a los drones
+a las direcciones órdenadas y mostrar en la grilla la nueva ubicación.
+
+3. La capacidad máxima de entrega de los drones son 3.
+
+4. Cuando los drones han realizado todas las entregas deben retornar a 
+el punto inicial.
+
+5. Todos los drones inician en la posición 0,0 mirando hacia el norte.
+
+6. Si la dirección saca a el drone de la grilla el programa debe avisar 
+que la dirección es invalida.
+
+7. Si no se tienen más entregas disponibles los drones no deberían aceptar
+más envíos.
+
+8. La grilla, la posición y la capacidad de las entregas deberían poder ser
+configuradas, y pensar en que otros alcances se podrían implementar en el
+proyecto.
+
+9. Implementar el uso de events emitters's en el backend.

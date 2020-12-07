@@ -19,27 +19,39 @@
                   <p>Tamaño de Grilla (Unidades)</p>
               </td>
               <td>
-                  <input type="number" class="grilla1">
+                  <input type="number" class="grilla1" id="grilla">
+                  <small id="grillaHelp">Escribir un número entero como tamaño de la grilla cuadrada</small>
               </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <p>Cantidad de Drones</p>
+                    <p>Punto de partida</p>
                 </td>
                 <td>
-                    <input type="number" class="drones1">
+                    <input type="text" class="drones1" id="puntoInicial">
+                    <small id="puntoHelp">Escribir el punto incial de manera x,y donde x y y son números enteros</small>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <p>Cantidad de almuerzos por Dron</p>
+                    <p>Capacidad de entrega de los drones</p>
                 </td>
                 <td>
-                    <input type="number" class="almuerzos1">
+                    <input type="number" class="almuerzos1" id="capacidad">
+                    <small id="capacidadHelp">Escribir el número de entregas máximas por dron</small>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Orientación de los drones</p>
+                </td>
+                <td>
+                    <input type="text" class="almuerzos1" id="orientacion">
+                    <small id="orientacionHelp">Escribir la orientación inicial de los drones: NORTE, SUR, ORIENTE, OCCIDENTE</small>
                 </td>
             </tr>
       </table>
-      <button type="submit" class="guardar">Guardar</button>
+      <button type="submit" class="guardar" id="config">Guardar</button>
 
   </div>
 
@@ -77,5 +89,6 @@
 </div>
 
 <script src="./js/app.js"></script>
+<script src="./js/configAPI.js"></script>
 </body>
 </html>

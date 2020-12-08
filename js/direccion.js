@@ -31,7 +31,8 @@ const pulsar = (id) => {
                     result.forEach(cas => { frase += cas })
                     if (confirm("Algunos caracteres estan mal, quieres enviar la siguiente peticion? \n  =>" + frase)) {
 
-                        // Palabra aceptada aqui va el codigo
+                        // Palabra aceptada, llamar API para enviar dron
+                        apiEnviar(id, cadena)
 
                         console.log("ha aceptado");
                     }
@@ -44,4 +45,30 @@ const pulsar = (id) => {
     }
     document.querySelector(`.dron${id}`).value = ""
     console.log("boton que primio tiene el id = " + id)
+}
+
+// Llamado de API con la dirección a la que se envía el dron
+const apiEnviar= (droneId, direccion) => {
+    const endPoint = '' //URL a usar para llamar la aPI
+
+    //Lamado a API
+    const nuevaUbicacion = await fetch(endPoint, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        // definir la info que se va a enviar al servidor
+        body: JSON.stringify({
+            "direccion": direccion,
+            "droneId": droneId, 
+        }),
+        }).then(data => data.json())
+        .then((result) => {
+            console.log('Nueva ubicacion', result.nuevaUbicacion) //nueva ubicacion del drone
+            return result.nuevaUbicacion //API debe retornar nueva ubicacion y el droneId
+        }).catch(error => {
+            console.log('ERROR', error)
+        })
+
+    //Hacer llamado a formula para renderizar la nueva ubicacion
 }

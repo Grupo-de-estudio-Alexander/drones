@@ -32,7 +32,7 @@ const pulsar = (id) => {
                     if (confirm("Algunos caracteres estan mal, quieres enviar la siguiente peticion? \n  =>" + frase)) {
 
                         // Palabra aceptada, llamar API para enviar dron
-                        apiEnviar(id, cadena)
+                        // apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
 
                         console.log("ha aceptado");
                     }
@@ -48,7 +48,7 @@ const pulsar = (id) => {
 }
 
 // Llamado de API con la dirección a la que se envía el dron
-const apiEnviar= (droneId, direccion) => {
+const apiEnviar= async (droneId, direccion) => {
     const endPoint = '' //URL a usar para llamar la aPI
 
     //Lamado a API
@@ -65,10 +65,11 @@ const apiEnviar= (droneId, direccion) => {
         }).then(data => data.json())
         .then((result) => {
             console.log('Nueva ubicacion', result.nuevaUbicacion) //nueva ubicacion del drone
-            return result.nuevaUbicacion //API debe retornar nueva ubicacion y el droneId
+            return result.nuevaUbicacion //API debe retornar un array con la posición del dron y su id
         }).catch(error => {
             console.log('ERROR', error)
         })
 
     //Hacer llamado a formula para renderizar la nueva ubicacion
+    llenarPlano(tamanoGrilla, nuevaUbicacion)
 }

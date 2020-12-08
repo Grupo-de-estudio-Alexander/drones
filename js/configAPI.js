@@ -11,7 +11,7 @@ const configApi = () => {
 
     console.log('button submitted')
     // fetch con post method para enviar la info al servidor
-    fetch('http://127.0.0.1:5000/config', {
+    fetch('http://127.0.0.1:5000/drones/config', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'

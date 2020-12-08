@@ -2,113 +2,129 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-.container1 , .container2 {
-background-image: linear-gradient(rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.274)),url("../images/fondodron.jpg");
-height: 43em;
-background-size: 100%;
-background-attachment:fixed;
-background-repeat: no-repeat;
-
+.container1,
+.container2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.274)), url("../images/fondodron.jpg");
+    height: 50em;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
-.formulario1{
+
+.formulario1 {
     font-family: 'Josefin Sans', sans-serif;
-    position: relative;
-    top: 100px;
-    left: 450px; 
+    margin: auto;
     right: 600px;
     background-color: rgba(255, 255, 255, 0.644);
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.233);
     width: 900px;
-    height:400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 30px;
     border-radius: 6px;
-
 }
 
-.container1{
+.container1 {
     display: grid;
 }
-h2{
+
+h2 {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
-    
 }
-p{
+
+.td3 {
+    width: 18em;
+}
+
+p {
     font-family: 'Josefin Sans', sans-serif;
-  
     font-size: 1.2em;
 }
 
-input{
- margin-bottom: 6px;
-  width:100px ;
-  height: 40px;
-  border-radius: 4px;
- background-color:rgba(255, 255, 255, 0.644) ;
- text-align: center;
- 
+small {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+    width: 20px;
+    color: rgb(71, 70, 70);
 }
 
-.guardar{
+input {
+    margin-bottom: 6px;
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.644);
+    text-align: center;
+}
+
+.guardar {
     border-radius: 4px;
     font-weight: 700;
     width: 150px;
     height: 40px;
 }
-.guardar:hover{
+
+.guardar:hover {
     background-color: rgb(255, 255, 255);
 }
 
-.container2{
-    display:none;
-    grid-template: 
-    "a  d" 200px
-    "b  d" 250px
-    "c  e" 240px/
-     30%  70%
-     ;
+.container2 {
+    display: none;
+    grid-template: "a  d" 200px "b  d" 350px "c  e" 240px/ 30% 70%;
 }
 
-.instrucciones2{
-    
-    
-  
+.instrucciones2 {
     grid-area: a;
 }
 
-.direccion2{
-    
-
-grid-area: b;
-
+.direccion2 {
+    grid-area: b;
 }
-.entregas2{
-    
-   
+
+.entregas2 {
     grid-area: c;
 }
-.grilla2{
-    
-    
+
+.grilla2 {
     grid-area: d;
 }
-.mensaje2{
-    
-   
+
+.mensaje2 {
     grid-area: e;
 }
-.instrucciones2,.direccion2,.entregas2,.grilla2,.mensaje2{
+
+.instrucciones2,
+.direccion2,
+.entregas2,
+.grilla2,
+.mensaje2 {
     margin: 1.2em;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.644);
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.233);
     border-radius: 4px;
+}
 
+.cuadricula {
+    justify-self: center;
+    border: solid gray;
+    border-spacing: 0;
+}
+
+.m {
+    /* background-color: rgb(255, 255, 255); */
+    background-image: url("../images/cuadricula.jpg");
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1.1em;
+    height: 1em;
+    text-align: center;
+    align-items: center;
+    /* border: 1px solid gray; */
 }

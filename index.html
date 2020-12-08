@@ -22,8 +22,17 @@
                         <p>Tamaño de Grilla (Unidades)</p>
                     </td>
                     <td>
-                        <input type="number" class="grilla1" id="grilla"></td>
+                        <input type="number" class="grilla1 inp" id="grilla"></td>
                     <td class="td3"> <small id="grillaHelp">Escribir un número entero como tamaño de la grilla cuadrada</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>Cantidad de Drones)</p>
+                    </td>
+                    <td>
+                        <input type="number" class="drones1 inp" id="drones"></td>
+                    <td class="td3"> <small id="dronesHelp">Escribir la cantidad de drones a manejar.</small>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +40,7 @@
                         <p>Punto de partida</p>
                     </td>
                     <td>
-                        <input type="text" class="drones1" id="puntoInicial"></td>
+                        <input type="text" class="drones1 inp" id="puntoInicial"></td>
                     <td class="td3"> <small id="puntoHelp">Escribir el punto incial de manera x,y donde x y y son números enteros</small>
                     </td>
                 </tr>
@@ -40,7 +49,7 @@
                         <p>Capacidad de entrega de los drones</p>
                     </td>
                     <td>
-                        <input type="number" class="almuerzos1" id="capacidad"></td>
+                        <input type="number" class="almuerzos1 inp" id="capacidad"></td>
                     <td class="td3"> <small id="capacidadHelp">Escribir el número de entregas máximas por dron</small>
                     </td>
                 </tr>
@@ -49,7 +58,7 @@
                         <p>Orientación de los drones</p>
                     </td>
                     <td>
-                        <input type="text" class="almuerzos1" id="orientacion"></td>
+                        <input type="text" class="almuerzos1 inp" id="orientacion"></td>
                     <td class="td3"> <small id="orientacionHelp">Escribir la orientación inicial de los drones: <br>NORTE, SUR, ORIENTE, OCCIDENTE</small>
                     </td>
                 </tr>
@@ -71,13 +80,15 @@
         </div>
 
         <div class="direccion2">
-            <h2>DIRECCIÓN DRONES</h2>
-
+            <center>
+                <h2>DIRECCIÓN DRONES</h2>
+            </center>
+            <div class="cantidadDrones"></div>
         </div>
 
         <div class="entregas2">
-            <h2>ENTREGAS REALIZADAS</h2>
-
+            <h2>ENTREGAS PENDIENTES</h2>
+            <div class="entregas"></div>
         </div>
         <div class="grilla2">
             <center>
@@ -96,6 +107,8 @@
     <script src="./js/app.js"></script>
     <script src="./js/configAPI.js"></script>
     <script src="./js/grilla.js"></script>
+    <script src="./js/entregasRealizadas.js"></script>
+    <script src="./js/direccion.js"></script>
 </body>
 
 </html>

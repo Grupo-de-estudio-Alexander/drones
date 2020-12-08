@@ -1,7 +1,6 @@
-const llenarPlano = (dimension, array) => {
+const llenarPlano = async(dimension, array) => {
     const tabla = document.querySelector(".cuadricula")
     tabla.innerHTML = ""
-
     for (let x = parseInt(dimension, 10); x >= 0; x--) {
         let tr = document.createElement("tr")
 
@@ -11,22 +10,16 @@ const llenarPlano = (dimension, array) => {
             td.setAttribute("class", "m")
             td.textContent = " "
 
-            if (comparaIf(x, y, array)) {
 
-                td.setAttribute("class", "d1")
-                td.textContent = "D1"
+            const arreglo = comparaIf(x, y, array)
+            if (arreglo[0]) {
+
+                td.setAttribute("class", "d" + arreglo[1])
+                td.textContent = "D" + arreglo[1]
 
             } else {
                 td.setAttribute("class", "m")
                 td.textContent = " "
-                    //     if (x === parseInt(d2[0], 10) && y === parseInt(d2[0], 10)) {
-
-                //         td.setAttribute("class", "d2")
-                //         td.textContent = "D2" 
-                //     } else {
-                //         td.setAttribute("class", "m")
-                //         td.textContent = "."
-                //     }
             }
 
             tabla.appendChild(td);
@@ -37,20 +30,37 @@ const llenarPlano = (dimension, array) => {
     }
 }
 const comparaIf = (x, y, dron) => {
-    let ubicacion = false
-
+    let ubicacion = [false, 0]
     dron.forEach(element => {
-        //console.log(element);
-        if (x === element[0] && y === element[1]) ubicacion = true
+
+        if (x === element[0][0] && y === element[0][1]) {
+            ubicacion[0] = true
+            ubicacion[1] = element[1]
+        }
+
     });
     return ubicacion
 
 }
-const createArray = () => {
+
+const createArray = async() => {
+
+    const data = await createObject();
+    let array = []
+    data.forEach(dron => {
+        let aux = []
+        aux.push(dron.posicionInicial)
+        aux.push(dron.id)
+        array.push(aux)
+    })
+    return array
+}
+
+const createObject = async() => {
     const { data } = await axios({
         method: "GET",
-        baseURL: "localhost:5000",
-        url: "/"
+        baseURL: "http://127.0.0.1:5000",
+        url: "/drones"
     });
-    console.log(data)
+    return data
 }

@@ -65,11 +65,22 @@ const apiEnviar= async (droneId, direccion) => {
         }),
         }).then(data => data.json())
         .then(async (result) => {
-            console.log('Nueva ubicacion actualizada')
-            // Hacer petición con la información actualizada de la base de datos
-            const nuevaUbicacion = await createArray()
-            //Hacer llamado a formula para renderizar la nueva ubicacion
-            llenarPlano(tamanoGrilla, nuevaUbicacion)
+        if(result==='salio de la grilla'){
+                alert(`Dron: ${droneId} salió de la grilla.`)
+            }else{
+                console.log('Nueva ubicacion actualizada')
+                let capacidad = result.capacidad-1
+                if(capacidad<0){
+                 alert("Ha excedido la cantidad de entregas.")
+                }else{
+                // Hacer petición con la información actualizada de la base de datos
+                const nuevaUbicacion = await createArray()
+                //Hacer llamado a formula para renderizar la nueva ubicacion
+                llenarPlano(tamanoGrilla, nuevaUbicacion)
+                mensajes(result.id,result.historial,capacidad)
+                llenarEntregas(capacidad)
+            }
+        }  
         }).catch(error => {
             console.log('ERROR', error)
         })

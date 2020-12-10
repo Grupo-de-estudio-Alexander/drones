@@ -29,7 +29,7 @@ const llenarPlano = async(dimension, array) => {
         tabla.appendChild(tr);
     }
 }
-const comparaIf = (x, y, dron) => {
+const comparaIf = (y, x, dron) => {
     let ubicacion = [false, 0]
     dron.forEach(element => {
 
@@ -59,6 +59,48 @@ const createArray = async() => {
 const createObject = async() => {
     const { data } = await axios({
         method: "GET",
+        baseURL: "http://127.0.0.1:5000",
+        url: "/drones"
+    });
+    return data
+}
+
+const createDron = async(parametros, droneId) => {
+    const direcciones = {
+        NORTE: 0,
+        ORIENTE: 1,
+        SUR: 2,
+        OCCIDENTE: 3
+    }
+    
+    let posicion = parametros.posicionInicial
+    posicion = posicion.split(',')
+    posicion = [parseInt(posicion[0]),parseInt(posicion[0])]
+    console.log(posicion)
+
+    const orientacionInicial = direcciones[parametros.orientacionInicial]
+    console.log('orientacion inicial', orientacionInicial)
+
+    
+    const { data } = await axios({
+        method: "POST",
+        baseURL: "http://127.0.0.1:5000",
+        url: "/drones",
+        data: {
+            id: droneId,
+            posicionInicial: posicion,
+            orientacion: orientacionInicial,
+            historial: [],
+            capacidad: parametros.capacidadDrones,
+            grilla: parametros.tamanoGrillas,
+        }
+    });
+    return data
+}
+
+const deleteDrones = async() => {
+    const { data } = await axios({
+        method: "DELETE",
         baseURL: "http://127.0.0.1:5000",
         url: "/drones"
     });

@@ -10,6 +10,15 @@ botonguardar.addEventListener("click", async(e) => {
 
     const paramIniciales = await configApi()
     console.log('app.js',paramIniciales)
+
+
+    //Eliminar drones actuales
+    await deleteDrones()
+    // Crear drones
+    for (let i=1; i <= paramIniciales.cantidadDrones; i++) {
+        await createDron(paramIniciales, i)
+    }
+
     tamanoGrilla = paramIniciales.tamanoGrilla
     const arr = await createArray() // hace peticion al servidor y crea un arreglo con las posiciones de los drones
     container1.style.display = "none" // Ayuda a desaparecer y

@@ -25,6 +25,7 @@ const pulsar = (id) => {
             if (aux.length === result.length) {
                 console.log("todo bien puede proceder");
                 // Palabra aceptada aqui va el codigo
+                apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
             } else {
                 if (aux.length !== result.length) {
                     let frase = ""
@@ -32,7 +33,7 @@ const pulsar = (id) => {
                     if (confirm("Algunos caracteres estan mal, quieres enviar la siguiente peticion? \n  =>" + frase)) {
 
                         // Palabra aceptada, llamar API para enviar dron
-                        // apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
+                        apiEnviar(id, frase) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
 
                         console.log("ha aceptado");
                     }

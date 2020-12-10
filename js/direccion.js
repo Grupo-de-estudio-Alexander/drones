@@ -49,10 +49,10 @@ const pulsar = (id) => {
 
 // Llamado de API con la dirección a la que se envía el dron
 const apiEnviar= async (droneId, direccion) => {
-    const endPoint = '' //URL a usar para llamar la aPI
+    const endPoint = 'http://127.0.0.1:5000/drones/ubicacion' //URL a usar para llamar la aPI
 
     //Lamado a API
-    const nuevaUbicacion = await fetch(endPoint, {
+    fetch(endPoint, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -63,13 +63,15 @@ const apiEnviar= async (droneId, direccion) => {
             "droneId": droneId, 
         }),
         }).then(data => data.json())
-        .then((result) => {
-            console.log('Nueva ubicacion', result.nuevaUbicacion) //nueva ubicacion del drone
-            return result.nuevaUbicacion //API debe retornar un array con la posición del dron y su id
+        .then(async (result) => {
+            console.log('Nueva ubicacion actualizada')
+            // Hacer petición con la información actualizada de la base de datos
+            const nuevaUbicacion = await createArray()
+            //Hacer llamado a formula para renderizar la nueva ubicacion
+            llenarPlano(tamanoGrilla, nuevaUbicacion)
         }).catch(error => {
             console.log('ERROR', error)
         })
 
-    //Hacer llamado a formula para renderizar la nueva ubicacion
-    llenarPlano(tamanoGrilla, nuevaUbicacion)
+    
 }

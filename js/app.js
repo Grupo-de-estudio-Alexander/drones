@@ -24,7 +24,7 @@ botonguardar.addEventListener("click", async(e) => {
     container1.style.display = "none" // Ayuda a desaparecer y
     container2.style.display = "grid" // aparecer las ventanas
 
-    llenarBotones(paramIniciales.cantidadDrones) //funcion recive cantidad de drones a mostrar
+    llenarBotones(paramIniciales.cantidadDrones, paramIniciales.posicionInicial) //funcion recive cantidad de drones a mostrar
     llenarEntregas(paramIniciales.capacidadDrones) //funcion recive cantidad de almuerzo de cada dron
     llenarPlano(tamanoGrilla, arr) //funcion recibe el tamaño de la grilla y un arreglo 
 })

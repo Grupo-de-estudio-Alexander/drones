@@ -1,13 +1,19 @@
-const llenarBotones = (drones) => {
+const llenarBotones = (drones, posicionInicial) => {
     console.log(drones);
     const tabla = document.querySelector(".cantidadDrones")
     tabla.innerHTML = ""
     for (let x = 1; x <= drones; x++) {
 
-        tabla.innerHTML += `<b>D${x}</b> <input type="text" class="dron${x} dr"><button class="btn${x} btn" onclick="pulsar(this.value)" value="${x}">selecionar</button> posicion <input type=text class="posicionD${x}" value=0,0 disabled="true" style="width: 2em;"> <br> `
+        tabla.innerHTML += `<b>D${x}</b> <input type="text" class="dron${x} dr"><button class="btn${x} btn" onclick="pulsar(this.value)" value="${x}">selecionar</button> posicion <input type=text class="posicionD${x}" value=${posicionInicial} disabled="true" style="width: 2em;"> <br> `
 
     }
 
+}
+
+//Cambiar valor de ubicación del dron en el panel dirección drones
+const cambiarValorUbicacion = (dronId, ubicacion) => {
+    const ubicacionInput = document.querySelector(`.posicionD${dronId}`)
+    ubicacionInput.value = ubicacion
 }
 
 const pulsar = (id) => {
@@ -79,6 +85,9 @@ const apiEnviar= async (droneId, direccion) => {
                 llenarPlano(tamanoGrilla, nuevaUbicacion)
                 mensajes(result.id,result.historial,capacidad)
                 llenarEntregas(capacidad)
+                
+                // Cambiar valor de ubicacion del panel dirección drones
+                cambiarValorUbicacion(result.id, result.posicionInicial)
             }
         }  
         }).catch(error => {

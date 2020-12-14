@@ -78,7 +78,14 @@
             <p>I: Giro a la Izquierda</p>
 
         </div>
-
+        <form name="uploadForm" id ="uploadFile">
+            <div>
+              <input id="uploadInput" type="file" name="myFiles" multiple>
+              selected files: <span id="fileNum">0</span>;
+              total size: <span id="fileSize">0</span>
+            </div>
+            <button type="submit" id="enviarInput">Enviar input</button>
+          </form>
         <div class="direccion2">
             <center>
                 <h2>DIRECCIÓN DRONES</h2>
@@ -109,6 +116,8 @@
     <script src="./js/grilla.js"></script>
     <script src="./js/entregasRealizadas.js"></script>
     <script src="./js/direccion.js"></script>
+
+    <script src="./js/enviar-input.js"></script>
 </body>
 
 </html>

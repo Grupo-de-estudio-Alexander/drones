@@ -14,7 +14,7 @@
 }
 
 .formulario1 {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     margin: auto;
     right: 600px;
     background-color: rgba(255, 255, 255, 0.644);
@@ -34,7 +34,7 @@
 }
 
 h2 {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-weight: 700;
 }
 
@@ -43,12 +43,12 @@ h2 {
 }
 
 p {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-size: 1.2em;
 }
 
 small {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-size: 1em;
     width: 20px;
     color: rgb(71, 70, 70);
@@ -79,7 +79,7 @@ input {
 
 .container2 {
     display: none;
-    grid-template: "a d d" 170px "b d d" 390px "b c e" 280px/ 30% 35% 35%;
+    grid-template: "a d d" 170px "b d d" 390px "f c e" 280px/ 30% 35% 35%;
 }
 
 .instrucciones2 {
@@ -103,11 +103,24 @@ input {
     overflow: scroll;
 }
 
+.upload2 {
+    grid-area: f;
+    text-align: center;
+}
+
+#download,
+#enviarInput {
+    height: 2.5em;
+    width: 8em;
+    margin-top: 1em;
+}
+
 .instrucciones2,
 .direccion2,
 .entregas2,
 .grilla2,
-.mensaje2 {
+.mensaje2,
+.upload2 {
     margin: 1.2em;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.644);

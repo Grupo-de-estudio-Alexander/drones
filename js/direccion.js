@@ -51,48 +51,49 @@ const pulsar = (id) => {
         }
     }
     document.querySelector(`.dron${id}`).value = ""
+    document.getElementById('download').disabled = false;
     console.log("boton que primio tiene el id = " + id)
 }
 
 // Llamado de API con la dirección a la que se envía el dron
-const apiEnviar= async (droneId, direccion) => {
+const apiEnviar = async(droneId, direccion) => {
     const endPoint = 'http://127.0.0.1:5000/drones/ubicacion' //URL a usar para llamar la aPI
 
     //Lamado a API
     fetch(endPoint, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        // definir la info que se va a enviar al servidor
-        body: JSON.stringify({
-            "direccion": direccion,
-            "droneId": droneId, 
-        }),
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // definir la info que se va a enviar al servidor
+            body: JSON.stringify({
+                "direccion": direccion,
+                "droneId": droneId,
+            }),
         }).then(data => data.json())
-        .then(async (result) => {
-        if(result==='salio de la grilla'){
+        .then(async(result) => {
+            if (result === 'salio de la grilla') {
                 alert(`Dron: ${droneId} salió de la grilla.`)
-            }else{
+            } else {
                 console.log('Nueva ubicacion actualizada')
-                let capacidad = result.capacidad-1
-                if(capacidad<0){
-                 alert("Ha excedido la cantidad de entregas.")
-                }else{
-                // Hacer petición con la información actualizada de la base de datos
-                const nuevaUbicacion = await createArray()
-                //Hacer llamado a formula para renderizar la nueva ubicacion
-                llenarPlano(tamanoGrilla, nuevaUbicacion)
-                mensajes(result.id,result.historial,capacidad)
-                llenarEntregas(capacidad)
-                
-                // Cambiar valor de ubicacion del panel dirección drones
-                cambiarValorUbicacion(result.id, result.posicionInicial)
+                let capacidad = result.capacidad - 1
+                if (capacidad < 0) {
+                    alert("Ha excedido la cantidad de entregas.")
+                } else {
+                    // Hacer petición con la información actualizada de la base de datos
+                    const nuevaUbicacion = await createArray()
+                        //Hacer llamado a formula para renderizar la nueva ubicacion
+                    llenarPlano(tamanoGrilla, nuevaUbicacion)
+                    mensajes(result.id, result.historial, capacidad)
+                    llenarEntregas(capacidad)
+
+                    // Cambiar valor de ubicacion del panel dirección drones
+                    cambiarValorUbicacion(result.id, result.posicionInicial)
+                }
             }
-        }  
         }).catch(error => {
             console.log('ERROR', error)
         })
 
-    
+
 }

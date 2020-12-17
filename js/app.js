@@ -8,6 +8,14 @@ let tamanoGrilla //declarar como variable global por lo que se usa en la otras f
 botonguardar.addEventListener("click", async(e) => {
     // e.preventDefault()
 
+    //Eliminar los reportes anteriores
+    axios({
+        method: "GET",
+        baseURL: "http://127.0.0.1:5000",
+        url: "/drones/file"
+    });
+
+
     const paramIniciales = await configApi()
     console.log('app.js',paramIniciales)
 

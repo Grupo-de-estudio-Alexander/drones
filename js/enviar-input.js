@@ -1,6 +1,6 @@
 const botonEnviarInput = document.querySelector("#uploadFile")
 
-botonEnviarInput.addEventListener("submit", (e) => {
+botonEnviarInput.addEventListener("submit", async (e) => {
     e.preventDefault()
 
     // archivos seleccionados
@@ -16,8 +16,15 @@ botonEnviarInput.addEventListener("submit", (e) => {
     }
     
     // lammado a api con archivos de input
+    const paramIniciales = await configApi()
+    
+    
     fetch('http://127.0.0.1:5000/input', {
       method: 'post',
       body: fd 
+    }).then(async () => {
+      const arr = await createArray()
+      console.log('informacion de drones', arr)
+      llenarPlano(paramIniciales.tamanoGrilla, arr)
     });
 })

@@ -3,7 +3,7 @@ const container1 = document.querySelector(".container1")
 const container2 = document.querySelector(".container2")
 
 let tamanoGrilla //declarar como variable global por lo que se usa en la otras formulas
-
+let paramIniciales;
 
 botonguardar.addEventListener("click", async(e) => {
     // e.preventDefault()
@@ -16,7 +16,7 @@ botonguardar.addEventListener("click", async(e) => {
     });
 
 
-    const paramIniciales = await configApi()
+    paramIniciales = await configApi()
     console.log('app.js',paramIniciales)
 
 

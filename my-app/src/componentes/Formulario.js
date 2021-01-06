@@ -7,11 +7,11 @@ export default class Formulario extends React.Component{
     constructor(props){
     super(props);
     this.state={
-        grilla:null,
-        drones:null,
-        ptoInicial: null,
-        almuerzos: null,
-        orientacion:null,
+        grilla:20,
+        drones:4,
+        ptoInicial: [0,0],
+        almuerzos: 3,
+        orientacion:'NORTE',
     }
     };
     capturarValor =(event)=>{

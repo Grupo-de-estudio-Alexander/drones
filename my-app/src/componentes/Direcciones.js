@@ -1,4 +1,4 @@
-import './Direcciones.css';
+import './styles/Direcciones.css';
 import React from 'react';
 const axios = require('axios');
 
@@ -71,8 +71,8 @@ class Direcciones extends React.Component {
 
     handleChange(event) {  
         console.log('Valor del diccionario de direccion',this.state.direccion[event.target.id])
-        this.state.direccion[event.target.id] = event.target.value + this.state.direccion[event.target.id]
-        this.state.droneId = event.target.id
+        // this.state.direccion[event.target.id] = event.target.value + this.state.direccion[event.target.id]
+        // this.state.droneId = event.target.id
     }
 
     handleEnviar(event) {
@@ -86,7 +86,8 @@ class Direcciones extends React.Component {
         enviarButtons = enviarButtons.map((val, index) => {
             const x = index + 1;
             return (
-                <div key={x}>
+                <div key={x} >
+                    <h2>DIRECCIÓN DRONES</h2>
                     <b>D{x}</b> 
                     <form onSubmit={this.handleEnviar}>
                         <input type="text" className="dron{x} dr" value={this.state.direccion[x]} onChange={this.handleChange} id={`${x}`}/>

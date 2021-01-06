@@ -1,0 +1,10 @@
+.boton{
+    border-radius: 4px;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}

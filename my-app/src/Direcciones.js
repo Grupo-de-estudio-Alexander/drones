@@ -48,8 +48,8 @@ class Direcciones extends React.Component {
                     //apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
                 } else {
                     if (aux.length !== result.length) {
-                        let frase = ""
-                        result.forEach(cas => { frase += cas })
+                        //let frase = ""
+                        //result.forEach(cas => { frase += cas })
                         //if (confirm("Algunos caracteres estan mal, quieres enviar la siguiente peticion? \n  =>" + frase)) {
 
                             // Palabra aceptada, llamar API para enviar dron

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Direcciones from './Direcciones';
+// import Direcciones from './Direcciones';
+import App from './app';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Direcciones name="Manuel" drones="4" posicionInicial="0,0"/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

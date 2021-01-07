@@ -1,0 +1,8 @@
+{
+  "name": "drones-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Grupo-de-estudio-Alexander/drones.git",
+  "author": "Manuel <mosquera.manuel2011@gmail.com>",
+  "license": "MIT"
+}

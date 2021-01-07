@@ -1,0 +1,25 @@
+.plano{
+    /* width: 600px; */
+  /* height: 600px; */
+  border: 1px solid #ffffff;
+  /* position: relative; */
+  box-shadow: 4px 4px 2px 4px rgba(0, 0, 0, 0.233);
+  position: relative;
+  margin: auto;
+  background-color:#ccc;
+  background-image: 
+  linear-gradient(white 2px, transparent 2px),
+  linear-gradient(90deg, white 2px, transparent 2px),
+  linear-gradient(rgb(250, 249, 249) 2px, transparent 1px),
+  linear-gradient(90deg, rgb(255, 255, 255) 2px, transparent 1px);
+}
+.drone1{
+    color: red;
+    position: relative;
+    /* left: 150px; top: 150px;  */
+}
+.drone2{
+    color: blue;
+    position: absolute;
+    /* left: 150px; top: 150px;  */
+}

@@ -131,6 +131,7 @@ class Direcciones extends React.Component {
                 if (capacidad < 0) {
                     alert("Ha excedido la cantidad de entregas.")
                 } else {
+                    console.log('La nueva ubicacion si se esta actualizando', this.state)
                     this.props.updateDrones();
                     // Hacer petición con la información actualizada de la base de datos
                     // const nuevaUbicacion = await createArray()

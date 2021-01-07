@@ -29,8 +29,8 @@ export default class Plano extends React.Component{
         let Y = ((a*this.state.tamañoCuadro)+(this.state.tamañoCuadro/4))+""
        return Y
     }
-    async componentDidMount(){
-        await this.setState( (state, props) =>({
+    componentDidMount(){
+        this.setState( (state, props) =>({
              tamañoCuadro: state.tamañoPlano/(state.tamaño+1)
         }))
     }
@@ -38,7 +38,7 @@ export default class Plano extends React.Component{
      return( 
      <div className='plano' style={{height:this.state.tamañoPlano+'px',width:this.state.tamañoPlano+'px',backgroundSize:(this.state.tamañoPlano/(1+this.state.tamaño))+'px '+(this.state.tamañoPlano/(1+this.state.tamaño))+'px'}}>
             {/* <div className='drone1' style={{left:this.posicionDronY(5)+'px',top:this.posicionDronX(19)+'px'}}>D1</div> */}
-            {this.props.datos.map((dato)=>{
+            {this.props.datosDrones.map((dato)=>{
                 return (
                 <div key={dato[2]} className='drone2' style={{left:this.posicionDronY(dato[0])+'px',top:this.posicionDronX(dato[1])+'px'}}>D{dato[2]}</div>
                 )

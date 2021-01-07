@@ -1,5 +1,5 @@
 import './Grilla.css'
-import Direcciones from './Direcciones';
+import Direcciones from './componentes/Direcciones';
 const React = require('react')
 const axios = require('axios')
 

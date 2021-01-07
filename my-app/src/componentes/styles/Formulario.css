@@ -1,0 +1,12 @@
+.formulario-home{
+    border: solid 1px black;
+    background-color: rgb(241, 237, 231);
+    border-radius: 6px;
+    width: 50em;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+.titulo{
+    text-align: center;
+}

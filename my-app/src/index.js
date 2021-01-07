@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Grilla from './Grilla';
+// import Direcciones from './Direcciones';
+import App from './app';
+import Grilla from './Grilla.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Grilla />
+    <App/>
+    <Grilla/>
   </React.StrictMode>,
   document.getElementById('root')
 );

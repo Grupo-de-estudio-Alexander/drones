@@ -1,0 +1,52 @@
+.formato{
+    margin: 0.5em;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.644);
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.233);
+    border-radius: 4px;
+}
+.contenedor{
+    display: grid;
+    grid-template: "A D D" "B D D" "C E F" / 35% 35% 30%;
+}
+
+.entregas{
+    grid-area: E;
+}
+.grilla{
+    grid-area: D;
+}
+.mensaje{
+    grid-area: F;
+}
+.instrucciones{
+    grid-area: A;
+}
+.direcion{
+    grid-area: B;
+}
+.archivos{
+    grid-area: C;
+}
+h2{
+    font-size: 18px;
+    padding-right: 5px;
+    color: rgb(10, 0, 65);
+    text-align: center;
+    /* color: rgb(32, 0, 10) 155); */
+}
+
+/* Panatallas menores a 1000 px */
+@media screen and (max-width: 1000px) {
+    .contenedor{
+        display: grid;
+        grid-template: "B D" "A C" "E F" / 35% auto;
+    }
+}
+/* Panatallas menores a 600 px */
+@media screen and (max-width: 650px) {
+    .contenedor{
+        display: grid;
+        grid-template: "A" "B" "D" "C" "E" "F";
+    }
+}

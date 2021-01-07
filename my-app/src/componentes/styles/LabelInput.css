@@ -1,0 +1,28 @@
+.label{
+    margin-top: 15px;
+    display: grid;
+    grid-template: "A B C"/ 30% 35% 35%;
+    
+}
+h2{
+        
+}
+input{
+        width: 240px;
+        height: 2.5em;
+}
+p{
+        color: gray;
+        font-size: 16px;
+        text-align: justify;
+}
+.tituloTexto{
+    text-align: justify; 
+    grid-area: A;
+}
+.input{
+    grid-area: B;
+}
+.testo{
+    grid-area: C;
+}

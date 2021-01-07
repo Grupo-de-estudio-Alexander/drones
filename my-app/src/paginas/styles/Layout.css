@@ -1,0 +1,21 @@
+body{
+
+    background: linear-gradient(rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.274)), url("../../images/fondodron.jpg");
+    height: 53em;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.cuadro{
+    
+}
+@media screen and (max-width: 1000px) {
+    body{
+
+        background: linear-gradient(rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.274)), url("../../images/fondodron.jpg");
+        height: 53em;
+        background-size: 100%;
+        background-attachment: fixed;
+        background-repeat: repeat;
+    }
+}

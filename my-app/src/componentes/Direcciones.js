@@ -1,4 +1,4 @@
-import './Direcciones.css';
+import './styles/Direcciones.css';
 import React from 'react';
 const axios = require('axios');
 
@@ -102,7 +102,7 @@ class Direcciones extends React.Component {
             }
         }
         // document.querySelector(`.dron${id}`).value = ""
-        document.getElementById('download').disabled = false;
+        // document.getElementById('download').disabled = false;
         console.log("boton que primio tiene el id = " + id)
     }
 

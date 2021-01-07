@@ -10,9 +10,7 @@ export default class Instrucciones extends React.Component{
      return( 
      <div className='formato instrucciones'>
          <h2>INSTRUCIONES</h2>
-         <h5>A: Avanzar<br/>
-D: Giro a la Derecha<br/>
-I: Giro a la Izquierda</h5>
+         <h5>A: Avanzar<br/>D: Giro a la Derecha<br/>I: Giro a la Izquierda</h5>
      </div>
      )
    }

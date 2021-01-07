@@ -35,3 +35,18 @@ h2{
     text-align: center;
     /* color: rgb(32, 0, 10) 155); */
 }
+
+/* Panatallas menores a 1000 px */
+@media screen and (max-width: 1000px) {
+    .contenedor{
+        display: grid;
+        grid-template: "B D" "A C" "E F" / 35% auto;
+    }
+}
+/* Panatallas menores a 600 px */
+@media screen and (max-width: 650px) {
+    .contenedor{
+        display: grid;
+        grid-template: "A" "B" "D" "C" "E" "F";
+    }
+}

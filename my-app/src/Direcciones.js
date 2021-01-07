@@ -2,23 +2,60 @@ import './Direcciones.css';
 import React from 'react';
 const axios = require('axios');
 
+class EnviarButton extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            droneId : this.props.droneId,
+            direccion : '',
+            posicionInicial : this.props.posicionInicial,
+        }
+
+        this.evaluate = this.props.evaluate
+        this.handleChange = this.handleChange.bind(this);
+        this.handleEnviar = this.handleEnviar.bind(this);
+    }
+
+    handleChange(event) {  
+        this.setState({direccion: event.target.value})
+    }
+
+    handleEnviar(event) {
+        event.preventDefault();
+        console.log('datos a enviar', this.state)
+        this.evaluate(this.state.droneId, this.state.direccion)
+        this.setState({direccion: ''})
+    }
+
+    render() {
+        return (
+            <div key={this.state.droneId}>
+                <b>D{this.state.droneId}</b> 
+                <form onSubmit={this.handleEnviar.bind(this)}>
+                    <input type="text" className="dron{x} dr" value={this.state.direccion} onChange={this.handleChange} id={`${this.state.droneId}`}/>
+                    <button className="btn{x} btn" type="submit" value="Submit"  >selecionar</button> 
+                </form>
+                posicion 
+                <input type="text" className="posicionD{x}" value={this.state.posicionInicial} disabled="true" style={{width: '2em'}}/> 
+                <br></br>
+            </div>
+            
+        );
+    }
+}
 class Direcciones extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             drones: 4,
             posicionInicial: "0,0",
-            direccion: {
-                '1': '',
-                '2': '',
-                '3': '',
-            },
+            direccion: '',
             droneId: null,
       }
-
-      this.handleChange = this.handleChange.bind(this);
-        this.handleEnviar = this.handleEnviar.bind(this);
+      this.pulsar = this.pulsar.bind(this);
+      this.apiEnviar = this.apiEnviar.bind(this);
     }
+
 
     
 
@@ -45,7 +82,7 @@ class Direcciones extends React.Component {
                 if (aux.length === result.length) {
                     console.log("todo bien puede proceder", cadena);
                     // Palabra aceptada aqui va el codigo
-                    //apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
+                    this.apiEnviar(id, cadena) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
                 } else {
                     if (aux.length !== result.length) {
                         let frase = ""
@@ -53,9 +90,9 @@ class Direcciones extends React.Component {
                         //if (confirm("Algunos caracteres estan mal, quieres enviar la siguiente peticion? \n  =>" + frase)) {
 
                             // Palabra aceptada, llamar API para enviar dron
-                            //apiEnviar(id, frase) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
+                            this.apiEnviar(id, frase) // Activar cuando se haya creado la API para actualizar la ubicación de los drones
 
-                            console.log("ha aceptado");
+                            console.log("ha aceptado", frase);
                         //}
 
                     }
@@ -64,39 +101,59 @@ class Direcciones extends React.Component {
 
             }
         }
-        document.querySelector(`.dron${id}`).value = ""
+        // document.querySelector(`.dron${id}`).value = ""
         document.getElementById('download').disabled = false;
         console.log("boton que primio tiene el id = " + id)
     }
 
-    handleChange(event) {  
-        console.log('Valor del diccionario de direccion',this.state.direccion[event.target.id])
-        this.state.direccion[event.target.id] = event.target.value + this.state.direccion[event.target.id]
-        this.state.droneId = event.target.id
-    }
+    // Llamado de API con la dirección a la que se envía el dron
+    apiEnviar = async(droneId, direccion) => {
+    const endPoint = 'http://127.0.0.1:5000/drones/ubicacion' //URL a usar para llamar la aPI
 
-    handleEnviar(event) {
-        event.preventDefault();
-        console.log('datos a enviar', this.state)
-        this.pulsar(this.state.droneId, this.state.direccion[this.state.droneId])
+    //Lamado a API
+    fetch(endPoint, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // definir la info que se va a enviar al servidor
+            body: JSON.stringify({
+                "direccion": direccion,
+                "droneId": droneId,
+            }),
+        }).then(data => data.json())
+        .then(async(result) => {
+            if (result === 'salio de la grilla') {
+                alert(`Dron: ${droneId} salió de la grilla.`)
+            } else {
+                console.log('Nueva ubicacion actualizada')
+                let capacidad = result.capacidad - 1
+                if (capacidad < 0) {
+                    alert("Ha excedido la cantidad de entregas.")
+                } else {
+                    this.props.updateDrones();
+                    // Hacer petición con la información actualizada de la base de datos
+                    // const nuevaUbicacion = await createArray()
+                        //Hacer llamado a formula para renderizar la nueva ubicacion
+                    // llenarPlano(tamanoGrilla, nuevaUbicacion)
+                    // mensajes(result.id, result.historial, capacidad)
+                    // llenarEntregas(capacidad)
+
+                    // Cambiar valor de ubicacion del panel dirección drones
+                    // cambiarValorUbicacion(result.id, result.posicionInicial)
+                }
+            }
+        }).catch(error => {
+            console.log('ERROR', error)
+        })
     }
 
     render() {
         let enviarButtons = Array(this.state.drones).fill(null);
         enviarButtons = enviarButtons.map((val, index) => {
-            const x = index + 1;
+            const inx = index + 1;
             return (
-                <div key={x}>
-                    <b>D{x}</b> 
-                    <form onSubmit={this.handleEnviar}>
-                        <input type="text" className="dron{x} dr" value={this.state.direccion[x]} onChange={this.handleChange} id={`${x}`}/>
-                        <button className="btn{x} btn" type="submit" value="Submit"  >selecionar</button> 
-                    </form>
-                    posicion 
-                    <input type="text" className="posicionD{x}" value={this.state.posicionInicial} disabled="true" style={{width: '2em'}}/> 
-                    <br></br>
-                </div>
-                
+                <EnviarButton droneId={inx} posicionInicial={this.state.posicionInicial} evaluate={this.pulsar}/>   
             );
         })
         return (

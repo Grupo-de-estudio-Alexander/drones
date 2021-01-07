@@ -1,0 +1,41 @@
+.cuadricula {
+    justify-self: center;
+    border: solid gray;
+    border-spacing: 0;
+}
+
+.m {
+    background-image: url("./assets/images/cuadricula.jpg");
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1.1em;
+    height: 1em;
+    text-align: center;
+    align-items: center;
+}
+
+.d1,
+.d2,
+.d3 {
+    background-image: url("./assets/images/cuadricula.jpg");
+    border-radius: 50%;
+    font-size: 15px;
+    text-align: center;
+}
+
+.d1 {
+    color: red;
+}
+
+.d2 {
+    color: blue;
+}
+
+.d3 {
+    color: green;
+}
+
+.dr {
+    width: 100px;
+    height: 30px;
+}
